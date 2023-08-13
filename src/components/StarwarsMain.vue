@@ -1,19 +1,15 @@
 <template>
-  <h3>영화 목록</h3>
-  <p>
-    <button @click="buttonClicked()">최신 글 가져오기</button>
-  </p>
-  <ul>
-    <li v-for="film in films" :key="film.episode_id">
-      에피소드 아이디: {{ film.episode_id }} | 제목: {{ film.title }}
-      <p>감독: {{ film.director }}</p>
-    </li>
-  </ul>
+  <StarwarsMainTitle :movieTitle="movieTitle" />
+  <StarwarsMainList :films="films" />
 </template>
 
 <script>
 import axios from "axios";
+import StarwarsMainList from "./StarwarsMainList.vue";
+import StarwarsMainTitle from "./StarwarsMainTitle.vue";
+
 export default {
+  components: { StarwarsMainTitle, StarwarsMainList },
   created() {
     //자동으로 콜백 되는 함수/화면이 렌더링 되기 전에 수행이 됨
     this.getData(); //항상 this 앞에 붙여주기
@@ -32,6 +28,7 @@ export default {
   data() {
     return {
       films: [],
+      movieTitle: "영화목록..입니다.",
     };
   },
 };
