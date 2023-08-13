@@ -1,42 +1,16 @@
 <template>
-  <h1>vue 스타워즈 오신 것을 환영합니다.</h1>
-  <h3>영화 목록</h3>
-  <ul>
-    <li v-for="film in films" :key="film.episode_id">
-      에피소드 아이디: {{ film.episode_id }} | 제목: {{ film.title }}
-      <p>감독: {{ film.director }}</p>
-    </li>
-    <p>
-      <button @click="buttonClicked()">최신 글 가져오기</button>
-    </p>
-    <h2>Copyright 2022 by ktds</h2>
-  </ul>
+  <StarwarsHeader />
+  <StarwarsMain />
+  <StarwarsFooter />
 </template>
 
 <script>
-import axios from "axios";
+import StarwarsHeader from "./components/StarwarsHeader.vue";
+import StarwarsMain from "./components/StarwarsMain.vue";
+import StarwarsFooter from "./components/StarwarsFooter.vue";
 export default {
+  components: { StarwarsHeader, StarwarsMain, StarwarsFooter },
   name: "App",
-  created() {
-    //자동으로 콜백 되는 함수/화면이 렌더링 되기 전에 수행이 됨
-    this.getData(); //항상 this 앞에 붙여주기
-  },
-  methods: {
-    buttonClicked() {},
-    async getData() {
-      // 비동기적으로 호출
-      //다른 곳에서도 호출 가능
-      axios.get("https://swapi.dev/api/films").then((result) => {
-        this.films = result.data.results;
-        // console.log(result.data.results);
-      });
-    },
-  },
-  data() {
-    return {
-      films: [],
-    };
-  },
 };
 </script>
 
