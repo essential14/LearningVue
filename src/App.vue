@@ -1,7 +1,9 @@
 <template>
-  <StarwarsHeader />
+  <v-slot:Title />
+  <StarwarsHeader>Starwars 에</StarwarsHeader>
   <StarwarsMain />
   <StarwarsFooter />
+  <v-slot:List />
 </template>
 
 <script>

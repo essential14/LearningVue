@@ -1,15 +1,18 @@
 <template>
   <StarwarsMainTitle :movieTitle="movieTitle" />
   <StarwarsMainList :films="films" />
+  {{ PIE }}
 </template>
 
 <script>
 import axios from "axios";
 import StarwarsMainList from "./StarwarsMainList.vue";
 import StarwarsMainTitle from "./StarwarsMainTitle.vue";
+import movie from "../mixins/movieMixin.js";
 
 export default {
   components: { StarwarsMainTitle, StarwarsMainList },
+  mixins: [movie],
   created() {
     //자동으로 콜백 되는 함수/화면이 렌더링 되기 전에 수행이 됨
     this.getData(); //항상 this 앞에 붙여주기
