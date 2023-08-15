@@ -1,5 +1,5 @@
 <template>
-  <StarwarsMainTitle :movieTitle="movieTitle" />
+  <StarwarsMainTitle />
   <StarwarsMainList :films="films" />
   {{ PIE }}
 </template>
@@ -31,7 +31,6 @@ export default {
   data() {
     return {
       films: [],
-      movieTitle: "영화목록..입니다.",
     };
   },
 };
